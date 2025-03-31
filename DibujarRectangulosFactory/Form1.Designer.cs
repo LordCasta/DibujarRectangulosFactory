@@ -34,83 +34,123 @@
             txtCoordenadaX = new TextBox();
             txtCoordenadaY = new TextBox();
             textBox6 = new Label();
-            iptColor = new ColorDialog();
             label4 = new Label();
             txtContador = new TextBox();
+            btnDibujar = new Button();
+            picColor = new PictureBox();
+            picLienzo = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)picColor).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picLienzo).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(352, 9);
+            label1.Location = new Point(402, 12);
             label1.Name = "label1";
-            label1.Size = new Size(113, 15);
+            label1.Size = new Size(143, 20);
             label1.TabIndex = 0;
             label1.Text = "Dibujar Rectángulos";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 58);
+            label2.Location = new Point(14, 77);
             label2.Name = "label2";
-            label2.Size = new Size(82, 15);
+            label2.Size = new Size(104, 20);
             label2.TabIndex = 1;
             label2.Text = "Coordenada X";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 98);
+            label3.Location = new Point(14, 131);
             label3.Name = "label3";
-            label3.Size = new Size(82, 15);
+            label3.Size = new Size(103, 20);
             label3.TabIndex = 2;
             label3.Text = "Coordenada Y";
             // 
             // txtCoordenadaX
             // 
-            txtCoordenadaX.Location = new Point(106, 50);
+            txtCoordenadaX.Location = new Point(121, 67);
+            txtCoordenadaX.Margin = new Padding(3, 4, 3, 4);
             txtCoordenadaX.Name = "txtCoordenadaX";
-            txtCoordenadaX.Size = new Size(189, 23);
+            txtCoordenadaX.Size = new Size(215, 27);
             txtCoordenadaX.TabIndex = 3;
             // 
             // txtCoordenadaY
             // 
-            txtCoordenadaY.Location = new Point(106, 99);
+            txtCoordenadaY.Location = new Point(121, 132);
+            txtCoordenadaY.Margin = new Padding(3, 4, 3, 4);
             txtCoordenadaY.Name = "txtCoordenadaY";
-            txtCoordenadaY.Size = new Size(193, 23);
+            txtCoordenadaY.Size = new Size(220, 27);
             txtCoordenadaY.TabIndex = 4;
             // 
             // textBox6
             // 
             textBox6.AutoSize = true;
-            textBox6.Location = new Point(12, 153);
+            textBox6.Location = new Point(14, 204);
             textBox6.Name = "textBox6";
-            textBox6.Size = new Size(36, 15);
+            textBox6.Size = new Size(45, 20);
             textBox6.TabIndex = 5;
             textBox6.Text = "Color";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(16, 206);
+            label4.Location = new Point(18, 275);
             label4.Name = "label4";
-            label4.Size = new Size(57, 15);
+            label4.Size = new Size(71, 20);
             label4.TabIndex = 6;
             label4.Text = "Contador";
             // 
             // txtContador
             // 
-            txtContador.Location = new Point(106, 198);
+            txtContador.Location = new Point(121, 264);
+            txtContador.Margin = new Padding(3, 4, 3, 4);
             txtContador.Name = "txtContador";
             txtContador.ReadOnly = true;
-            txtContador.Size = new Size(97, 23);
+            txtContador.Size = new Size(110, 27);
             txtContador.TabIndex = 7;
             // 
+            // btnDibujar
+            // 
+            btnDibujar.Location = new Point(21, 339);
+            btnDibujar.Name = "btnDibujar";
+            btnDibujar.Size = new Size(138, 46);
+            btnDibujar.TabIndex = 8;
+            btnDibujar.Text = "Dibujar";
+            btnDibujar.UseVisualStyleBackColor = true;
+            btnDibujar.Click += btnDibujar_Click;
+            // 
+            // picColor
+            // 
+            picColor.BackColor = SystemColors.ControlLightLight;
+            picColor.Location = new Point(121, 187);
+            picColor.Name = "picColor";
+            picColor.Size = new Size(122, 59);
+            picColor.TabIndex = 9;
+            picColor.TabStop = false;
+            picColor.Click += pictureBox1_Click;
+            // 
+            // picLienzo
+            // 
+            picLienzo.BackColor = Color.White;
+            picLienzo.BorderStyle = BorderStyle.FixedSingle;
+            picLienzo.Location = new Point(385, 73);
+            picLienzo.Name = "picLienzo";
+            picLienzo.Size = new Size(504, 390);
+            picLienzo.TabIndex = 10;
+            picLienzo.TabStop = false;
+            this.picLienzo.Paint += new System.Windows.Forms.PaintEventHandler(this.picLienzo_Paint);
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
+            Controls.Add(picLienzo);
+            Controls.Add(picColor);
+            Controls.Add(btnDibujar);
             Controls.Add(txtContador);
             Controls.Add(label4);
             Controls.Add(textBox6);
@@ -119,8 +159,11 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)picColor).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picLienzo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -133,8 +176,10 @@
         private TextBox txtCoordenadaX;
         private TextBox txtCoordenadaY;
         private Label textBox6;
-        private ColorDialog iptColor;
         private Label label4;
         private TextBox txtContador;
+        private Button btnDibujar;
+        private PictureBox picColor;
+        private PictureBox picLienzo;
     }
 }
