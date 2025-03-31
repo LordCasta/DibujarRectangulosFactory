@@ -34,6 +34,10 @@ namespace DibujarRectangulosFactory
                 }
                 else
                 {
+                    if(x < 0 || y < 0)
+                    {
+                        throw new ArgumentOutOfRangeException("Las coordenadas no pueden ser negativas.");
+                    }
                     x = Math.Max(0, Math.Min(x, picLienzo.Width - 50));  // Evita salir del ancho
                     y = Math.Max(0, Math.Min(y, picLienzo.Height - 50)); // Evita salir del alto
 
@@ -50,10 +54,15 @@ namespace DibujarRectangulosFactory
 
 
             }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void LimpiarCampos()
