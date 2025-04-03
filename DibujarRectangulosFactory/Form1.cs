@@ -1,3 +1,5 @@
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace DibujarRectangulosFactory
 {
     public partial class Form1 : Form
@@ -24,6 +26,7 @@ namespace DibujarRectangulosFactory
             try
             {
                 int x; int y;
+                string tipo = cmbFigura.SelectedItem.ToString();
                 if (!int.TryParse(txtCoordenadaX.Text, out x))
                 {
                     MessageBox.Show("Ingrese valores numéricos válidos para X", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -32,9 +35,13 @@ namespace DibujarRectangulosFactory
                 {
                     MessageBox.Show("Ingrese valores numéricos válidos para Y", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                else if (string.IsNullOrWhiteSpace(tipo))
+                {
+                    MessageBox.Show("Seleccione un tipo de figura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 else
                 {
-                    if(x < 0 || y < 0)
+                    if (x < 0 || y < 0)
                     {
                         throw new ArgumentOutOfRangeException("Las coordenadas no pueden ser negativas.");
                     }
@@ -45,15 +52,15 @@ namespace DibujarRectangulosFactory
 
                         Color colorSeleccionado = picColor.BackColor;
 
-                        Figura nuevoRectangulo = FiguraFactory.CrearRectangulo(colorSeleccionado, x, y);
-                        figuras.Add(nuevoRectangulo);
+                        Figura nuevaFigura = FiguraFactory.CrearFigura(tipo, colorSeleccionado, x, y);
+                        figuras.Add(nuevaFigura);
 
                         txtContador.Text = figuras.Count().ToString();
 
                         LimpiarCampos();
                         picLienzo.Invalidate();
                     }
-                    
+
                 }
 
 
@@ -85,6 +92,16 @@ namespace DibujarRectangulosFactory
             }
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            #region[Combo figuras]
+            cmbFigura.Items.Add("Rectángulo");
+            cmbFigura.Items.Add("Círculo");
+            cmbFigura.Items.Add("Línea");
+            cmbFigura.Items.Add("Triángulo");
+            cmbFigura.SelectedIndex = 0;
+            #endregion
+        }
     }
 }
 

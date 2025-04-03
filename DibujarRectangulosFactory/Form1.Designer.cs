@@ -39,6 +39,8 @@
             btnDibujar = new Button();
             picColor = new PictureBox();
             picLienzo = new PictureBox();
+            label5 = new Label();
+            cmbFigura = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)picColor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picLienzo).BeginInit();
             SuspendLayout();
@@ -98,7 +100,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(18, 275);
+            label4.Location = new Point(12, 271);
             label4.Name = "label4";
             label4.Size = new Size(71, 20);
             label4.TabIndex = 6;
@@ -106,7 +108,7 @@
             // 
             // txtContador
             // 
-            txtContador.Location = new Point(121, 264);
+            txtContador.Location = new Point(121, 268);
             txtContador.Margin = new Padding(3, 4, 3, 4);
             txtContador.Name = "txtContador";
             txtContador.ReadOnly = true;
@@ -115,7 +117,7 @@
             // 
             // btnDibujar
             // 
-            btnDibujar.Location = new Point(21, 339);
+            btnDibujar.Location = new Point(14, 417);
             btnDibujar.Name = "btnDibujar";
             btnDibujar.Size = new Size(138, 46);
             btnDibujar.TabIndex = 8;
@@ -142,12 +144,32 @@
             picLienzo.Size = new Size(504, 390);
             picLienzo.TabIndex = 10;
             picLienzo.TabStop = false;
-            this.picLienzo.Paint += new System.Windows.Forms.PaintEventHandler(this.picLienzo_Paint);
+            picLienzo.Paint += picLienzo_Paint;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(14, 329);
+            label5.Name = "label5";
+            label5.Size = new Size(50, 20);
+            label5.TabIndex = 11;
+            label5.Text = "Figura";
+            // 
+            // cmbFigura
+            // 
+            cmbFigura.FormattingEnabled = true;
+            cmbFigura.Location = new Point(116, 325);
+            cmbFigura.Name = "cmbFigura";
+            cmbFigura.Size = new Size(151, 28);
+            cmbFigura.TabIndex = 12;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(cmbFigura);
+            Controls.Add(label5);
             Controls.Add(picLienzo);
             Controls.Add(picColor);
             Controls.Add(btnDibujar);
@@ -162,6 +184,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)picColor).EndInit();
             ((System.ComponentModel.ISupportInitialize)picLienzo).EndInit();
             ResumeLayout(false);
@@ -181,5 +204,7 @@
         private Button btnDibujar;
         private PictureBox picColor;
         private PictureBox picLienzo;
+        private Label label5;
+        private ComboBox cmbFigura;
     }
 }
