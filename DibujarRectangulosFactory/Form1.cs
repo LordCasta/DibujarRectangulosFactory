@@ -38,18 +38,22 @@ namespace DibujarRectangulosFactory
                     {
                         throw new ArgumentOutOfRangeException("Las coordenadas no pueden ser negativas.");
                     }
-                    x = Math.Max(0, Math.Min(x, picLienzo.Width - 50));  // Evita salir del ancho
-                    y = Math.Max(0, Math.Min(y, picLienzo.Height - 50)); // Evita salir del alto
+                    else
+                    {
+                        x = Math.Max(0, Math.Min(x, picLienzo.Width - 50));  // Evita salir del ancho
+                        y = Math.Max(0, Math.Min(y, picLienzo.Height - 50)); // Evita salir del alto
 
-                    Color colorSeleccionado = picColor.BackColor;
+                        Color colorSeleccionado = picColor.BackColor;
 
-                    Figura nuevoRectangulo = FiguraFactory.CrearRectangulo(colorSeleccionado, x, y);
-                    figuras.Add(nuevoRectangulo);
+                        Figura nuevoRectangulo = FiguraFactory.CrearRectangulo(colorSeleccionado, x, y);
+                        figuras.Add(nuevoRectangulo);
 
-                    txtContador.Text = Rectangulo.Contador.ToString();
+                        txtContador.Text = figuras.Count().ToString();
 
-                    LimpiarCampos();
-                    picLienzo.Invalidate();
+                        LimpiarCampos();
+                        picLienzo.Invalidate();
+                    }
+                    
                 }
 
 
